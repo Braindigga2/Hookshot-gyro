@@ -33,6 +33,8 @@ jobs:
           # the release commit and the tag are pushed with this token; RELEASE_TOKEN lets the tag start the AppImage
           # and Windows builder workflows, which publish the GitHub release
           token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+      - name: Apply Gyro Patch
+        run: patch -p1 < gyro.patch
 
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
